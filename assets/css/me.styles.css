@@ -1,0 +1,13 @@
+.form-signin{
+    max-width: 430px;
+    padding: 1rem;
+  }
+
+.bg-layer-1{
+    background-image: url('../img/foto3.jpg');
+    height: 500px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}

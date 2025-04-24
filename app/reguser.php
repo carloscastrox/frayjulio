@@ -19,7 +19,6 @@ if (isset($_POST['btnreg'])) {
     if ($search->rowCount() > 0){
         $msg = array("El correo ya existe", "danger");
     }
-
     // Validation Data
 
     elseif ($insert->execute()) {
@@ -34,7 +33,7 @@ if (isset($_POST['btnreg'])) {
 Encriptación de contraseña OK
 Alertas o mensajes amigables, Refinamiento de las Alertas OK
 Validación de datos únicos OK
-API Js password Viewer ---------
+API Js password Viewer OK
 Recuperación de contraseña de usuarios 
 */
 ?>

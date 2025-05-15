@@ -1,10 +1,11 @@
 <?php
 /* 
  * Validación de sesión de usuarios OK
- * Seguridad de la aplicación en el home
- * Menú modular para el home 
  * Validar si el usuario ya ha iniciado sesión OK
  * Si la sesión existe, redirigir a la página de home OK
+ * 
+ * Seguridad de la aplicación en el home
+ * Menú modular para el home OK
  */
 include_once 'conn.php';
 session_start();
@@ -15,7 +16,7 @@ if (isset($_SESSION['user'])) {
 }
 
 if (isset($_POST['btnlogin'])) {
-    $login = $conn->prepare('SELECT * FROM user WHERE email = ?');
+    $login = $conn->prepare('SELECT * FROM user WHERE email = ? LIMIT 1');
     $login->bindParam(1, $_POST['email']);
     $login->execute();
     $result = $login->fetch(PDO::FETCH_ASSOC);
@@ -94,8 +95,8 @@ if (isset($_POST['btnlogin'])) {
                             <input class="form-control" type="password" name="pass" id="password"
                                 placeholder="Ingrese su contraseña" required>
                             <span class="input-group-text" onclick="pass_show_hide();">
-                                <i class="bi bi-eye-fill d-none" id="showeye" style="font-size: 20px;"></i>
-                                <i class="bi bi-eye-slash-fill" id="hideeye" style="font-size: 20px;"></i>
+                                <i class="bi bi-eye-fill d-none" id="showeye"></i>
+                                <i class="bi bi-eye-slash-fill" id="hideeye"></i>
                             </span>
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 <?php
 # incluir la conexión 
-require_once 'conn.php';
+include_once 'conn.php';
 
 if (isset($_POST['btnreg'])) {
     $insert = $conn->prepare('INSERT INTO user(fname,lname,email,pass) VALUES(?,?,?,?)');
@@ -11,7 +11,7 @@ if (isset($_POST['btnreg'])) {
     $insert->bindParam(4, $pass);
 
     // Validation Data
-    $search = $conn->prepare('SELECT * FROM user WHERE email = ?');
+    $search = $conn->prepare('SELECT * FROM user WHERE email = ? LIMIT 1');
     $search->bindParam(1, $_POST['email']);
     $search->execute();
     $search->fetch(PDO::FETCH_ASSOC);
@@ -20,7 +20,6 @@ if (isset($_POST['btnreg'])) {
         $msg = array("El correo ya existe", "danger");
     }
     // Validation Data
-
     elseif ($insert->execute()) {
         $msg = array("Usuario creado","success");
         } else {
@@ -107,8 +106,8 @@ Recuperación de contraseña de usuarios
                             <input class="form-control" type="password" name="pass" id="password"
                                 placeholder="Ingrese su contraseña" required>
                             <span class="input-group-text" onclick="pass_show_hide();">
-                                <i class="bi bi-eye-fill d-none" id="showeye" style="font-size: 20px;"></i>
-                                <i class="bi bi-eye-slash-fill" id="hideeye" style="font-size: 20px;"></i>
+                                <i class="bi bi-eye-fill d-none" id="showeye"></i>
+                                <i class="bi bi-eye-slash-fill" id="hideeye"></i>
                             </span>
                         </div>
                     </div>

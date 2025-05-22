@@ -1,3 +1,37 @@
+<?php
+require 'conn.php';
+session_start();
+
+if (isset($_POST['btnforgot'])) {
+    $email=$_POST['email'];
+    //preparar la consulta
+    $fpass = $conn->prepare('SELECT * FROM user WHERE email=? LIMIT 1');
+    $fpass->bindParam(1, $email);
+    $fpass->execute();
+    $row = $fpass->fetch(PDO::ERRMODE_EXCEPTION);
+    
+    if ($fpass->rowCount() > 0) {
+        $id = base64_encode($row['iduser']);
+        $token = md5(uniqid(rand()));
+
+        $uptoken = $conn->prepare('UPDATE user SET token = ? WHERE email = ?');
+        $uptoken->bindParam(1, $token);
+        $uptoken->bindParam(2, $email);
+        $uptoken->execute();
+
+        /* Construir el mensaje de correo */
+        $subject = '=?UTF-8?B?' . base64_encode('Restablecer Contraseña') . '=?=';
+        $body = "<p>Hola " . $row['fname'] . ", ya puedes restablecer la contraseña</p><br>
+        <p>Por favor, haz click en el siguiente enlace para restablecer tu contraseña:</p>
+        <a href='http://localhost/11_25/frayjulio/app/resetpass?id=$id&token=$token'>Restablecer</a>";
+        
+        include 'config.mailer.php';
+    } else {
+        $msg = array("El correo no existe", "danger");
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es-CO" data-bs-theme="dark">
 

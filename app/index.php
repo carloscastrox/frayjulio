@@ -1,11 +1,37 @@
 <?php
-/* 
- * Validación de sesión de usuarios OK
- * Validar si el usuario ya ha iniciado sesión OK
- * Si la sesión existe, redirigir a la página de home OK
- * 
- * Seguridad de la aplicación en el home
- * Menú modular para el home OK
+ /* 
+SESIONES
+ * Validación de sesión de usuarios ok
+ * Seguridad de la aplicación en el home ok
+ 
+  RECUPERAR CONTRASEÑA
+ * PHPMailer 
+ * Config Mailer (cuenta de Gmail)
+ * Formulario forgotpass.php
+ * Formulario resetpass.php
+ 
+ MENU MODULAR
+ * Menú modular para el home ok
+ * Validar si el usuario ya ha iniciado sesión ok
+ * Si la sesión existe, redirigir a la página de INDEX ok
+
+ROLES
+* Validar a los usuarios por roles
+* Direccionar a los usuarios a la página de home según su rol (homea, homec, homev, etc) 
+* crear en la base de datos el campo rol y asignar el rol a cada usuario ok
+
+PERFIL 
+* Crear perfil de usuarios de acuerdo a su rol (Incluyendo imagen de perfil)
+* Formatear campo date en php
+* Actualizar los datos del perfil de usuario
+
+CRUD 
+* Imprimir datos en una tabla dinamica
+* Utilizando librerias datatables.net
+* Insertar datos a la tabla dinamica
+* Eliminar datos de la tabla dinamica
+* Actualizar datos de la tabla dinamica
+
  */
 include_once 'conn.php';
 session_start();

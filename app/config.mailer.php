@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-// Incluir las librerias de PHPMailer
+//Inlcuir la libreria de PHPMailer
 require '../assets/PHPMailer/PHPMailer.php';
 require '../assets/PHPMailer/SMTP.php';
 require '../assets/PHPMailer/Exception.php';
@@ -15,19 +15,18 @@ $mail = new PHPMailer(true);
 
 try {
     //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    $mail->SMTPDebug = 0;                      //Enable verbose debug output
     $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through (smtp.gmail.com)
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Username   = 'softpartyasem@gmail.com';                     //SMTP username
-    $mail->Password   = 'sroo rkdn geff frgh';                               //SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
-    $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    $mail->Password   = 'sroo rkdn geff frgh';                               //SMTP password (Contraseña de apliación)
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption (tls)
+    $mail->Port       = 587;              //TCP port to connect to; use (587) if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('softpartyasem@gmail.com', '=?UTF-8?B?' . base64_encode('Restablecer Contraseña') . '=?=');
-    $mail->addAddress($email);     //Add a recipient
-    //$mail->addAddress('ellen@example.com');               //Name is optional
+    $mail->setFrom('softpartyasem@gmail.com','=?UTF-8?B?'.base64_encode("Restablecer Contraseña"). "=?=");
+    $mail->addAddress($email);               //Name is optional
     //$mail->addReplyTo('info@example.com', 'Information');
     //$mail->addCC('cc@example.com');
     //$mail->addBCC('bcc@example.com');
@@ -39,11 +38,20 @@ try {
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = $subject;
-    $mail->Body    = $body;
+    $mail->Body    = $message;
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
     $mail->send();
-    $msg = array("Se ha enviado un correo a $email para restablecer su contraseña","success");
+
+    $msg = array("Se ha enviado un correo a $email para restablecer su contraseña", "success");
 } catch (Exception $e) {
     $msg = array("Message could not be sent. Mailer Error: {$mail->ErrorInfo}","danger");
 }
+
+/* Configurar cuenta de Correo Gmail 
+*Activar Verificación en dos pasos 
+*Contraseñas de aplicaciones
+Crear una contraseña de aplicación para el correo PHPMailer
+https://myaccount.google.com/apppasswords?rapt=AEjHL4Ojwt_NkZIR0jwMoNqi4t0wwqgck3e729UMlFvhIiIQj0O15MA5uETJ_U4KyPdKRpIWX5sDIujQFhSQ2ShGbJ8qIyA3rLMfHr1n1pr7_aI4LSbz4b4
+*/
+
+?>

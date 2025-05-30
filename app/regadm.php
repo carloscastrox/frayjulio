@@ -10,13 +10,16 @@ Recuperación de contraseña
 
 require_once 'conn.php';
 
+$rol = "admin";
+
 if (isset($_POST['btn-reg'])) {
-    $insert = $conn->prepare('INSERT INTO user(fname,lname,email,pass) VALUES(?,?,?,?)');
+    $insert = $conn->prepare('INSERT INTO user(fname,lname,email,pass,rol) VALUES(?,?,?,?,?)');
     $insert->bindParam(1, $_POST['fname']);
     $insert->bindParam(2, $_POST['lname']);
     $insert->bindParam(3, $_POST['email']);
     $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
     $insert->bindParam(4, $pass);
+    $insert->bindParam(5, $rol);
 
     /* Data Validation */
     $search = $conn->prepare('SELECT * FROM user WHERE email = ?');
@@ -81,7 +84,7 @@ if (isset($_POST['btn-reg'])) {
                 </span>
                 <div class="text-center">
                     <img src="../assets/img/logo.png" alt="Logo" width="72" height="72">
-                    <h1 class="display-6">Registro de Usuario</h1>
+                    <h1 class="display-6">Registro de Administrador</h1>
                 </div>
                 <form action="" method="post" enctype="application/x-www-form-urlencoded">
                     <div class="mb-3 mt-3">
@@ -105,8 +108,8 @@ if (isset($_POST['btn-reg'])) {
                             <input class="form-control" type="password" name="pass" id="password"
                                 placeholder="Ingrese su contraseña" required>
                             <span class="input-group-text" onclick="pass_show_hide();">
-                                <i class="bi bi-eye-fill d-none" id="showeye"></i>
-                                <i class="bi bi-eye-slash-fill" id="hideeye"></i>
+                                <i class="bi bi-eye-fill d-none" id="showeye" style="font-size: 20px;"></i>
+                                <i class="bi bi-eye-slash-fill" id="hideeye" style="font-size: 20px;"></i>
                             </span>
                         </div>
                     </div>

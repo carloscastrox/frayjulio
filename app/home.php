@@ -25,7 +25,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['id']) && isset($_SESSION['rol']
             <link rel="shortcut icon" href="../assets/img/logosena.png" type="image/x-icon">
 
             <!--SEO Tags-->
-            <meta name="author" content="Celia">
+            <meta name="author" content="Fray Julio">
             <meta name="description" content="Aplicativo web Bootstrap">
             <meta name="keywords" content="SENA, sena, Sena">
 
@@ -66,6 +66,8 @@ if (isset($_SESSION['user']) && isset($_SESSION['id']) && isset($_SESSION['rol']
                             </ul>
                             <div class="d-flex">
                                 <button class="btn btn-primary" type="button"
+                                    onclick="location.href='?page=profile'">Perfil</button>
+                                <button class="btn btn-primary" type="button"
                                     onclick="location.href='logout.php'">Salir</button>
                             </div>
                         </div>
@@ -76,8 +78,8 @@ if (isset($_SESSION['user']) && isset($_SESSION['id']) && isset($_SESSION['rol']
                 <?php
                 //controlador de modulos o subpáginas
                 $page = isset($_GET['page']) ? strtolower($_GET['page']) : 'home';
-                require_once './'.$page.'.php';
-                
+                require_once './' . $page . '.php';
+
                 if ($page == 'home') {
                     require_once 'init.php';
                 }
@@ -90,6 +92,8 @@ if (isset($_SESSION['user']) && isset($_SESSION['id']) && isset($_SESSION['rol']
     exit();
 }
     ?>
+    <!-- Script Bootstrap -->
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
         </body>
 
         </html>

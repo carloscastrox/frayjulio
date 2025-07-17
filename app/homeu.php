@@ -25,7 +25,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['id']) && isset($_SESSION['rol']
             <link rel="shortcut icon" href="../assets/img/logosena.png" type="image/x-icon">
 
             <!--SEO Tags-->
-            <meta name="author" content="Celia">
+            <meta name="author" content="Fray Julio">
             <meta name="description" content="Aplicativo web Bootstrap">
             <meta name="keywords" content="SENA, sena, Sena">
 

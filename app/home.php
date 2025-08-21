@@ -39,6 +39,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['id']) && isset($_SESSION['rol']
             <!--Styles and complements Bootstrap 5.3-->
             <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
             <link rel="stylesheet" href="../assets/css/me.styles.css">
+            <link rel="stylesheet" href="../assets/datatables/datatables.min.css">
         </head>
 
         <body>
@@ -60,6 +61,9 @@ if (isset($_SESSION['user']) && isset($_SESSION['id']) && isset($_SESSION['rol']
                                 <li class="nav-item">
                                     <a class="nav-link" href="?page=pubs">Publicaciones</a>
                                 </li>
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="?page=table">Tabla</a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#team">Integrantes</a>
                                 </li>
@@ -74,7 +78,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['id']) && isset($_SESSION['rol']
                     </div>
                 </nav>
             </header>
-            <main class="container pt-5">
+            <main class="container pt-5 mt-5">
                 <?php
                 //controlador de modulos o subpáginas
                 $page = isset($_GET['page']) ? strtolower($_GET['page']) : 'home';

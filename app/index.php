@@ -21,14 +21,14 @@ ROLES
 * crear en la base de datos el campo rol y asignar el rol a cada usuario OK
 
 PERFIL 
-* Crear perfil de usuarios de acuerdo a su rol (Incluyendo imagen de perfil)
-* Formatear campo date en php
-* Actualizar los datos del perfil de usuario
+* Crear perfil de usuarios de acuerdo a su rol (Incluyendo imagen de perfil) OK
+* Formatear campo date en php -pendiente
+* Actualizar los datos del perfil de usuario OK
 
 
 CRUD 
-* Crear tabla Utilizando librerias datatables.net(inicializar, Responsive, language)
-* Activar Botones de exportación a Excel y PDF
+* Crear tabla Utilizando librerias datatables.net(inicializar, Responsive, language)OK
+* Activar Botones de exportación a Excel y PDF OK
 * Imprimir datos en una tabla dinamica
 * Insertar datos a la tabla dinamica
 * Eliminar datos de la tabla dinamica

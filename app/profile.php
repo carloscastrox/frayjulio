@@ -37,6 +37,7 @@ function actualizarPerfil()
     $name = $_FILES['picture']['name'];
     $file = $_FILES['picture']['tmp_name'];
     $way = "profile/" . $name;
+    
     if (!empty($name)) {
         move_uploaded_file($file, $way);
     } else {
@@ -94,7 +95,7 @@ if (isset($_SESSION['update_success'])) {
                     </div>
                     <div class="col-6 mb-3">
                         <h6>Registro de Inicio</h6>
-                        <p class="text-muted"><?php echo $result['regdate']; ?></p>
+                        <p class="text-muted"><?php echo date("d/m/Y H:i:s", strtotime($result['regdate']));?></p>
                     </div>
                     <div class="col-6 mb-3">
                         <h6>Fecha de Nacimiento</h6>

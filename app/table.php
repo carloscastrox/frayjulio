@@ -13,14 +13,21 @@
         </tr>
     </thead>
     <tbody>
+        <?php 
+        $data = $conn->prepare('SELECT fname,lname,email,rol,regdate FROM user');
+        $data->execute();
+        //while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
+        foreach ($data as $row) {
+        ?>
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><?php echo $row['fname'];?></td>
+            <td><?php echo $row['lname'];?></td>
+            <td><?php echo $row['email'];?></td>
+            <td><?php echo $row['rol'];?></td>
+            <td><?php echo $row['regdate'];?></td>
+            <td>Botones Editar y Eliminar</td>
         </tr>
+        <?php } ?>
     </tbody>
 </table>
 

@@ -25,7 +25,7 @@ if (isset($_POST['btn-update'])) {
 // Función para actualizar el perfil
 function actualizarPerfil()
 {
-    global $conn, $msg;
+    global $conn, $msg, $result;
 
     $updperfil = $conn->prepare("UPDATE user SET fname = ?, lname = ?, email = ?, borndate = ?, picture = ?, aboutme = ? WHERE iduser = ?");
     $updperfil->bindParam(1, $_POST['fname']);
@@ -41,9 +41,7 @@ function actualizarPerfil()
     if (!empty($name)) {
         move_uploaded_file($file, $way);
     } else {
-        // Si no se sube una nueva imagen, mantener la anterior
-        global $data;
-        $way = $data['picture'];
+        $way = $result['picture']; // Mantener la imagen actual si no se sube una nueva
     }
 
     $updperfil->bindParam(5, $way);
@@ -95,11 +93,11 @@ if (isset($_SESSION['update_success'])) {
                     </div>
                     <div class="col-6 mb-3">
                         <h6>Registro de Inicio</h6>
-                        <p class="text-muted"><?php echo date("d/m/Y H:i:s", strtotime($result['regdate']));?></p>
+                        <p class="text-muted"><?php echo date("d/m/Y h:i:s A", strtotime($result['regdate']));?></p>
                     </div>
                     <div class="col-6 mb-3">
                         <h6>Fecha de Nacimiento</h6>
-                        <p class="text-muted"><?php echo $result['borndate']; ?></p>
+                        <p class="text-muted"><?php echo date("d/m/Y", strtotime($result['borndate']));?></p>
                     </div>
                 </div>
                 <h6>Sobre mí</h6>
@@ -156,7 +154,9 @@ if (isset($_SESSION['update_success'])) {
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="picture" class="form-label">Imagen de perfíl:</label>
+                        <img src="<?php echo $result['picture']; ?>" alt="imgprofile" class="img-fluid my-2 mx-auto d-block" style="width: 100px;" />
                         <input type="file" class="form-control" id="picture" name="picture">
+                        
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="aboutme" class="form-label">Sobre mí:</label>

@@ -62,10 +62,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['id']) && isset($_SESSION['rol']
                                     <a class="nav-link" href="?page=pubs">Publicaciones</a>
                                 </li>
                                  <li class="nav-item">
-                                    <a class="nav-link" href="?page=table">Tabla</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#team">Integrantes</a>
+                                    <a class="nav-link" href="?page=table">Usuarios</a>
                                 </li>
                             </ul>
                             <div class="d-flex">
